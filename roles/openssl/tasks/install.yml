@@ -48,6 +48,17 @@
 
 
 
+# Install compiled OpenSSL
+# This operation must be executed as sudo user
+#
+- name: Install compiled OpenSSL
+  command: make install
+  args:
+    chdir: "{{ openssl_sources_location }}/openssl-OpenSSL_{{ openssl_version | replace( '.', '_' ) }}"
+  tags: [openssl]
+
+
+
 # Remove downloaded sources after installation
 #
 - name: Cleanup downloaded sources
